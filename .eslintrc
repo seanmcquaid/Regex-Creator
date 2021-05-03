@@ -1,8 +1,23 @@
 {
-  "extends": ["eslint:recommended", "plugin:react/recommended", "prettier"],
-  "plugins": ["prettier", "react"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "prettier",
+    "plugin:jest/recommended"
+  ],
+  "plugins": ["prettier", "react", "jest"],
   "rules": {
-    "prettier/prettier": ["error"]
+    "prettier/prettier": ["warn"],
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off"
+  },
+  "settings": {
+    "react": { "version": "17" }
+  },
+  "env": {
+    "jest/globals": true,
+    "browser": true,
+    "node": true
   },
   "parser": "babel-eslint"
 }
