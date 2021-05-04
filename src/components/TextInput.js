@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import { Input } from 'react-flexible-components';
 
-const TextInput = styled(Input)``;
+const TextInput = styled.input``;
 
 export default TextInput;
