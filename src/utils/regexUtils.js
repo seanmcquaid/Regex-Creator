@@ -20,10 +20,15 @@ export const createRegex = ({
   if (isEnd) {
     return '$';
   }
-  return '';
+  const regex = '';
+  return regex;
 };
 
 export const addPatternModifier = (
   isGlobal = false,
   isCaseInsensitive = false,
-) => {};
+) => {
+  return `${isGlobal ? isGlobal : ''}${
+    isCaseInsensitive ? isCaseInsensitive : ''
+  }`;
+};
