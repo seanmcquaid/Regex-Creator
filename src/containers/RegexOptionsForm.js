@@ -4,12 +4,14 @@ import { TextInput, Checkbox } from '../components';
 
 const RegexOptionsForm = ({ params, setParams }) => {
   const onChange = (event) => {
+    const booleanFields = Object.keys(params).filter(
+      (param) => typeof params[param] === 'boolean',
+    );
     setParams((prevState) => ({
       ...prevState,
-      [event.target.name]:
-        event.target.name === 'isGlobal'
-          ? event.target.checked
-          : event.target.value,
+      [event.target.name]: booleanFields.includes(event.target.name)
+        ? event.target.checked
+        : event.target.value,
     }));
   };
 
@@ -26,7 +28,7 @@ const RegexOptionsForm = ({ params, setParams }) => {
         onChange={onChange}
         name="isGlobal"
         label="Global"
-        isChecked={params.isGlobal}
+        checked={params.isGlobal}
       />
     </Form>
   );
