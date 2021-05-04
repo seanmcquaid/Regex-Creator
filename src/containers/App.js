@@ -4,7 +4,8 @@ import RegexOptionsForm from './RegexOptionsForm';
 
 const App = () => {
   const [params, setParams] = useState({
-    exampleString: '',
+    characters: '',
+    isGlobal: false,
   });
   return (
     <div>
