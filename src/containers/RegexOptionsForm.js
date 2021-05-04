@@ -11,11 +11,13 @@ const RegexOptionsForm = ({ params, setParams }) => {
   );
 
   const onChange = (event) => {
+    const name = [event.target.name];
+    const value = booleanFields.includes(event.target.name)
+      ? event.target.checked
+      : event.target.value;
     setParams((prevState) => ({
       ...prevState,
-      [event.target.name]: booleanFields.includes(event.target.name)
-        ? event.target.checked
-        : event.target.value,
+      [name]: value,
     }));
   };
 
