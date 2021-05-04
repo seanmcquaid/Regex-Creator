@@ -4,9 +4,21 @@ import RegexOptionsForm from './RegexOptionsForm';
 
 const App = () => {
   const [params, setParams] = useState({
+    exampleString: '',
     characters: '',
+    includeCharacters: false,
     isGlobal: false,
+    isCaseInsensitive: false,
+    isStart: false,
+    isEnd: false,
+    onlyNumbers: false,
+    lowestNumber: 0,
+    highestNumber: 9,
+    onlyLetters: false,
+    firstLetter: 'a',
+    lastLetter: 'z',
   });
+
   return (
     <div>
       <Header></Header>
