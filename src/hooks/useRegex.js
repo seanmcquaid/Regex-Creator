@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const useRegex = (params) => {
+const useRegex = () => {
   const [regex, setRegex] = useState('');
 
   useEffect(() => {}, []);

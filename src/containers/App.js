@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import styled from 'styled-components';
+import RegexOptionsForm from './RegexOptionsForm';
 
-function App() {
+const App = () => {
+  const [params, setParams] = useState({
+    exampleString: '',
+  });
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header></Header>
+      <Main>
+        <RegexOptionsForm params={params} setParams={setParams} />
+      </Main>
     </div>
   );
-}
+};
+
+const Header = styled.header``;
+
+const Main = styled.main``;
 
 export default App;
