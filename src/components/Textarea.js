@@ -20,7 +20,7 @@ const StyledTextarea = styled.textarea``;
 
 Textarea.propTypes = {
   onChange: propTypes.func.isRequired,
-  value: propTypes.bool.isRequired,
+  value: propTypes.string.isRequired,
   name: propTypes.string.isRequired,
   label: propTypes.string.isRequired,
 };

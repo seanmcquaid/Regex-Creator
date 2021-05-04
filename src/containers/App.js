@@ -12,11 +12,7 @@ const App = () => {
     isStart: false,
     isEnd: false,
     onlyNumbers: false,
-    lowestNumber: 0,
-    highestNumber: 9,
     onlyLetters: false,
-    firstLetter: 'a',
-    lastLetter: 'z',
   });
 
   return (
