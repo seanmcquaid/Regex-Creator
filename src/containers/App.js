@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import { H1 } from '../components';
+import useRegex from '../hooks/useRegex';
 import RegexOptionsForm from './RegexOptionsForm';
+import RegexResult from './RegexResult';
 
 const App = () => {
   const [params, setParams] = useState({
@@ -14,12 +17,16 @@ const App = () => {
     onlyNumbers: false,
     onlyLetters: false,
   });
+  const regex = useRegex(params);
 
   return (
     <div>
-      <Header></Header>
+      <Header>
+        <H1>Regex Creator</H1>
+      </Header>
       <Main>
         <RegexOptionsForm params={params} setParams={setParams} />
+        <RegexResult regex={regex} exampleString={params.exampleString} />
       </Main>
     </div>
   );
