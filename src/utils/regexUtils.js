@@ -20,8 +20,11 @@ export const createRegex = ({
   if (isEnd) {
     return '$';
   }
-  const regex = '';
-  return regex;
+
+  return `/[${includeCharacters ? '' : '^'}${characters}]/${addPatternModifier(
+    isGlobal,
+    isCaseInsensitive,
+  )}`;
 };
 
 export const addPatternModifier = (
