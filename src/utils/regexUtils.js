@@ -31,7 +31,5 @@ export const addPatternModifier = (
   isGlobal = false,
   isCaseInsensitive = false,
 ) => {
-  return `${isGlobal ? isGlobal : ''}${
-    isCaseInsensitive ? isCaseInsensitive : ''
-  }`;
+  return `${isGlobal ? 'g' : ''}${isCaseInsensitive ? 'i' : ''}`;
 };
