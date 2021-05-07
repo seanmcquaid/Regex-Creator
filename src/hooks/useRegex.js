@@ -2,13 +2,16 @@ import { useEffect, useState } from 'react';
 import { createRegex } from '../utils/regexUtils';
 
 const useRegex = (params) => {
-  const [regex, setRegex] = useState('');
+  const [regexInfo, setRegexInfo] = useState({
+    regex: '',
+    flags: '',
+  });
 
   useEffect(() => {
-    setRegex(createRegex(params));
+    setRegexInfo(createRegex(params));
   }, [params]);
 
-  return regex;
+  return regexInfo;
 };
 
 export default useRegex;

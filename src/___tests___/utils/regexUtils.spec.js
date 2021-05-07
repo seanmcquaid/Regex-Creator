@@ -1,4 +1,4 @@
-import { createRegex, addPatternModifier } from '../../utils/regexUtils';
+import { createRegex, getFlags } from '../../utils/regexUtils';
 
 describe('regexUtils', () => {
   describe('createRegex', () => {
@@ -14,7 +14,10 @@ describe('regexUtils', () => {
         onlyLetters: false,
       });
 
-      expect(result).toEqual('/[0-9]/');
+      expect(result).toEqual({
+        regex: '[0-9]',
+        flags: '',
+      });
     });
 
     it('onlyLetters', () => {
@@ -29,7 +32,7 @@ describe('regexUtils', () => {
         onlyLetters: true,
       });
 
-      expect(result).toEqual('/[a-zA-Z]+/');
+      expect(result).toEqual({ regex: '[a-zA-Z]+', flags: '' });
     });
 
     it('isStart', () => {
@@ -44,7 +47,7 @@ describe('regexUtils', () => {
         onlyLetters: false,
       });
 
-      expect(result).toEqual('/^/');
+      expect(result).toEqual({ regex: '^', flags: '' });
     });
 
     it('isEnd', () => {
@@ -59,7 +62,7 @@ describe('regexUtils', () => {
         onlyLetters: false,
       });
 
-      expect(result).toEqual('/$/');
+      expect(result).toEqual({ regex: '$', flags: '' });
     });
 
     it('includeCharacters', () => {
@@ -74,7 +77,7 @@ describe('regexUtils', () => {
         onlyLetters: false,
       });
 
-      expect(result).toEqual('/[hello]/');
+      expect(result).toEqual({ regex: '[hello]', flags: '' });
     });
 
     it('excludeCharacters', () => {
@@ -89,21 +92,21 @@ describe('regexUtils', () => {
         onlyLetters: false,
       });
 
-      expect(result).toEqual('/[^hello]/');
+      expect(result).toEqual({ regex: '[^hello]', flags: '' });
     });
   });
 
-  describe('addPatternModifier', () => {
+  describe('getFlags', () => {
     it('isGlobal flag', () => {
-      expect(addPatternModifier(true, false)).toEqual('g');
+      expect(getFlags(true, false)).toEqual('g');
     });
 
     it('isCaseInsensitive flag', () => {
-      expect(addPatternModifier(false, true)).toEqual('i');
+      expect(getFlags(false, true)).toEqual('i');
     });
 
     it('Both isGlobal and isCaseInsensitive flag', () => {
-      expect(addPatternModifier(true, true)).toEqual('gi');
+      expect(getFlags(true, true)).toEqual('gi');
     });
   });
 });
