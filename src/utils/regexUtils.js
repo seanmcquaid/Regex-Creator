@@ -1,35 +1,23 @@
 export const createRegex = ({
   characters = '',
   includeCharacters = false,
-  isGlobal = false,
-  isCaseInsensitive = false,
   isStart = false,
   isEnd = false,
   onlyNumbers = false,
   onlyLetters = false,
 }) => {
   if (onlyNumbers) {
-    return {
-      regex: '[0-9]',
-      flags: '',
-    };
+    return '[0-9]';
   }
   if (onlyLetters) {
-    return { regex: '[a-zA-Z]+', flags: '' };
+    return '[a-zA-Z]+';
   }
   if (isStart) {
-    return { regex: '^', flags: '' };
+    return '^';
   }
   if (isEnd) {
-    return { regex: '$', flags: '' };
+    return '$';
   }
 
-  return {
-    regex: `[${includeCharacters ? '' : '^'}${characters}]`,
-    flags: getFlags(isGlobal, isCaseInsensitive),
-  };
-};
-
-export const getFlags = (isGlobal = false, isCaseInsensitive = false) => {
-  return `${isGlobal ? 'g' : ''}${isCaseInsensitive ? 'i' : ''}`;
+  return `[${includeCharacters ? '' : '^'}${characters}]`;
 };

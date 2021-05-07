@@ -95,18 +95,4 @@ describe('regexUtils', () => {
       expect(result).toEqual({ regex: '[^hello]', flags: '' });
     });
   });
-
-  describe('getFlags', () => {
-    it('isGlobal flag', () => {
-      expect(getFlags(true, false)).toEqual('g');
-    });
-
-    it('isCaseInsensitive flag', () => {
-      expect(getFlags(false, true)).toEqual('i');
-    });
-
-    it('Both isGlobal and isCaseInsensitive flag', () => {
-      expect(getFlags(true, true)).toEqual('gi');
-    });
-  });
 });
