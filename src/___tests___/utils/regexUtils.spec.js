@@ -1,4 +1,4 @@
-import { createRegex, getFlags } from '../../utils/regexUtils';
+import { createRegex } from '../../utils/regexUtils';
 
 describe('regexUtils', () => {
   describe('createRegex', () => {
@@ -14,10 +14,7 @@ describe('regexUtils', () => {
         onlyLetters: false,
       });
 
-      expect(result).toEqual({
-        regex: '[0-9]',
-        flags: '',
-      });
+      expect(result).toEqual('[0-9]');
     });
 
     it('onlyLetters', () => {
@@ -32,7 +29,7 @@ describe('regexUtils', () => {
         onlyLetters: true,
       });
 
-      expect(result).toEqual({ regex: '[a-zA-Z]+', flags: '' });
+      expect(result).toEqual('[a-zA-Z]+');
     });
 
     it('isStart', () => {
@@ -47,7 +44,7 @@ describe('regexUtils', () => {
         onlyLetters: false,
       });
 
-      expect(result).toEqual({ regex: '^', flags: '' });
+      expect(result).toEqual('^');
     });
 
     it('isEnd', () => {
@@ -62,7 +59,7 @@ describe('regexUtils', () => {
         onlyLetters: false,
       });
 
-      expect(result).toEqual({ regex: '$', flags: '' });
+      expect(result).toEqual('$');
     });
 
     it('includeCharacters', () => {
@@ -77,7 +74,7 @@ describe('regexUtils', () => {
         onlyLetters: false,
       });
 
-      expect(result).toEqual({ regex: '[hello]', flags: '' });
+      expect(result).toEqual('[hello]');
     });
 
     it('excludeCharacters', () => {
@@ -92,7 +89,7 @@ describe('regexUtils', () => {
         onlyLetters: false,
       });
 
-      expect(result).toEqual({ regex: '[^hello]', flags: '' });
+      expect(result).toEqual('[^hello]');
     });
   });
 });
