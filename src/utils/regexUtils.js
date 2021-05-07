@@ -1,6 +1,6 @@
 export const createRegex = ({
   characters = '',
-  includeCharacters = false,
+  excludeCharacters = false,
   isStart = false,
   isEnd = false,
   onlyNumbers = false,
@@ -19,5 +19,5 @@ export const createRegex = ({
     return '$';
   }
 
-  return `[${includeCharacters ? '' : '^'}${characters}]`;
+  return `[${excludeCharacters ? '^' : ''}${characters}]`;
 };

@@ -5,7 +5,7 @@ describe('regexUtils', () => {
     it('onlyNumbers', () => {
       const result = createRegex({
         characters: '',
-        includeCharacters: false,
+        excludeCharacters: false,
         isGlobal: false,
         isCaseInsensitive: false,
         isStart: false,
@@ -20,7 +20,7 @@ describe('regexUtils', () => {
     it('onlyLetters', () => {
       const result = createRegex({
         characters: '',
-        includeCharacters: false,
+        excludeCharacters: false,
         isGlobal: false,
         isCaseInsensitive: false,
         isStart: false,
@@ -35,7 +35,7 @@ describe('regexUtils', () => {
     it('isStart', () => {
       const result = createRegex({
         characters: '',
-        includeCharacters: false,
+        excludeCharacters: false,
         isGlobal: false,
         isCaseInsensitive: false,
         isStart: true,
@@ -50,7 +50,7 @@ describe('regexUtils', () => {
     it('isEnd', () => {
       const result = createRegex({
         characters: '',
-        includeCharacters: false,
+        excludeCharacters: false,
         isGlobal: false,
         isCaseInsensitive: false,
         isStart: false,
@@ -62,25 +62,10 @@ describe('regexUtils', () => {
       expect(result).toEqual('$');
     });
 
-    it('includeCharacters', () => {
-      const result = createRegex({
-        characters: 'hello',
-        includeCharacters: true,
-        isGlobal: false,
-        isCaseInsensitive: false,
-        isStart: false,
-        isEnd: false,
-        onlyNumbers: false,
-        onlyLetters: false,
-      });
-
-      expect(result).toEqual('[hello]');
-    });
-
     it('excludeCharacters', () => {
       const result = createRegex({
         characters: 'hello',
-        includeCharacters: false,
+        excludeCharacters: true,
         isGlobal: false,
         isCaseInsensitive: false,
         isStart: false,
@@ -90,6 +75,21 @@ describe('regexUtils', () => {
       });
 
       expect(result).toEqual('[^hello]');
+    });
+
+    it('include Characters', () => {
+      const result = createRegex({
+        characters: 'hello',
+        excludeCharacters: false,
+        isGlobal: false,
+        isCaseInsensitive: false,
+        isStart: false,
+        isEnd: false,
+        onlyNumbers: false,
+        onlyLetters: false,
+      });
+
+      expect(result).toEqual('[hello]');
     });
   });
 });

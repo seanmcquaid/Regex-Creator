@@ -7,8 +7,10 @@ describe('<App/>', () => {
   describe('<RegexOptionsForm/>', () => {
     it('Boolean field becomes checked when clicked', () => {
       render(<App />);
-      userEvent.click(screen.getByTestId('isGlobalCheckbox'));
-      expect(screen.getByTestId('isGlobalCheckbox').checked).toBeTruthy();
+      userEvent.click(screen.getByTestId('excludeCharactersCheckbox'));
+      expect(
+        screen.getByTestId('excludeCharactersCheckbox').checked,
+      ).toBeTruthy();
     });
 
     it('Text field changes value when typed in', () => {

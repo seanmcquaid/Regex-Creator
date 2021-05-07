@@ -9,9 +9,7 @@ const App = () => {
   const [params, setParams] = useState({
     exampleString: '',
     characters: '',
-    includeCharacters: false,
-    isGlobal: false,
-    isCaseInsensitive: false,
+    excludeCharacters: false,
     isStart: false,
     isEnd: false,
     onlyNumbers: false,
