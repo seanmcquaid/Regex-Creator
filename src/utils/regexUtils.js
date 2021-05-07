@@ -9,27 +9,27 @@ export const createRegex = ({
   onlyLetters = false,
 }) => {
   if (onlyNumbers) {
-    return '/[0-9]/';
+    return {
+      regex: '[0-9]',
+      flags: '',
+    };
   }
   if (onlyLetters) {
-    return '/[a-zA-Z]+/';
+    return { regex: '[a-zA-Z]+', flags: '' };
   }
   if (isStart) {
-    return '/^/';
+    return { regex: '^', flags: '' };
   }
   if (isEnd) {
-    return '/$/';
+    return { regex: '$', flags: '' };
   }
 
-  return `/[${includeCharacters ? '' : '^'}${characters}]/${addPatternModifier(
-    isGlobal,
-    isCaseInsensitive,
-  )}`;
+  return {
+    regex: `[${includeCharacters ? '' : '^'}${characters}]`,
+    flags: getFlags(isGlobal, isCaseInsensitive),
+  };
 };
 
-export const addPatternModifier = (
-  isGlobal = false,
-  isCaseInsensitive = false,
-) => {
+export const getFlags = (isGlobal = false, isCaseInsensitive = false) => {
   return `${isGlobal ? 'g' : ''}${isCaseInsensitive ? 'i' : ''}`;
 };
