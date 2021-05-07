@@ -4,7 +4,8 @@ import { Textarea } from '../components';
 
 const RegexResult = ({ regex, exampleString }) => {
   const newRegex = new RegExp(regex, 'igm');
-  console.log(exampleString.match(newRegex));
+  const includedChars = exampleString.match(newRegex) ?? [];
+
   return (
     <RegexResultContainer>
       <Regex>{`/${regex}/igm`}</Regex>
@@ -14,6 +15,18 @@ const RegexResult = ({ regex, exampleString }) => {
         readOnly={true}
         label="Example String Regex Result"
       />
+      <div>
+        {exampleString.split('').map((char) => {
+          if (includedChars.includes(char)) {
+            return (
+              <HighlightedChar data-testid="highlightedChar">
+                {char}
+              </HighlightedChar>
+            );
+          }
+          return char;
+        })}
+      </div>
     </RegexResultContainer>
   );
 };
@@ -21,6 +34,10 @@ const RegexResult = ({ regex, exampleString }) => {
 const RegexResultContainer = styled.div``;
 
 const Regex = styled.span``;
+
+const HighlightedChar = styled.span`
+  color: red;
+`;
 
 RegexResult.propTypes = {
   regex: propTypes.string.isRequired,
