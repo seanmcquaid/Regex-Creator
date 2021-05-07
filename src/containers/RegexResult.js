@@ -1,6 +1,5 @@
 import propTypes from 'prop-types';
 import styled from 'styled-components';
-import { Textarea } from '../components';
 
 const RegexResult = ({ regex, exampleString }) => {
   const newRegex = new RegExp(regex, 'igm');
@@ -9,24 +8,19 @@ const RegexResult = ({ regex, exampleString }) => {
   return (
     <RegexResultContainer>
       <Regex>{`/${regex}/igm`}</Regex>
-      <Textarea
-        value={exampleString}
-        name="exampleStringRegexResult"
-        readOnly={true}
-        label="Example String Regex Result"
-      />
-      <div>
-        {exampleString.split('').map((char) => {
-          if (includedChars.includes(char)) {
-            return (
+      <ExampleStringContainer>
+        {exampleString
+          .split('')
+          .map((char) =>
+            includedChars.includes(char) ? (
               <HighlightedChar data-testid="highlightedChar">
                 {char}
               </HighlightedChar>
-            );
-          }
-          return char;
-        })}
-      </div>
+            ) : (
+              char
+            ),
+          )}
+      </ExampleStringContainer>
     </RegexResultContainer>
   );
 };
@@ -34,6 +28,8 @@ const RegexResult = ({ regex, exampleString }) => {
 const RegexResultContainer = styled.div``;
 
 const Regex = styled.span``;
+
+const ExampleStringContainer = styled.div``;
 
 const HighlightedChar = styled.span`
   color: red;

@@ -24,4 +24,20 @@ describe('<App/>', () => {
       );
     });
   });
+
+  describe('<RegexResult/>', () => {
+    it('Highlighted Char displays when regex matches', () => {
+      render(<App />);
+      userEvent.type(screen.getByTestId('exampleStringTextarea'), 'Example');
+      userEvent.type(screen.getByTestId('charactersTextInput'), 'a');
+      expect(screen.queryAllByTestId('highlightedChar').length).toEqual(1);
+    });
+
+    it("No highlighted char displays when regex doesn't match", () => {
+      render(<App />);
+      userEvent.type(screen.getByTestId('exampleStringTextarea'), 'Example');
+      userEvent.type(screen.getByTestId('charactersTextInput'), 'z');
+      expect(screen.queryAllByTestId('highlightedChar').length).toEqual(0);
+    });
+  });
 });
