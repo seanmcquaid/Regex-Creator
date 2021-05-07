@@ -1,11 +1,11 @@
-import { createRegex, addPatternModifier } from '../../utils/regexUtils';
+import { createRegex } from '../../utils/regexUtils';
 
 describe('regexUtils', () => {
   describe('createRegex', () => {
     it('onlyNumbers', () => {
       const result = createRegex({
         characters: '',
-        includeCharacters: false,
+        excludeCharacters: false,
         isGlobal: false,
         isCaseInsensitive: false,
         isStart: false,
@@ -14,13 +14,13 @@ describe('regexUtils', () => {
         onlyLetters: false,
       });
 
-      expect(result).toEqual('/[0-9]/');
+      expect(result).toEqual('[0-9]');
     });
 
     it('onlyLetters', () => {
       const result = createRegex({
         characters: '',
-        includeCharacters: false,
+        excludeCharacters: false,
         isGlobal: false,
         isCaseInsensitive: false,
         isStart: false,
@@ -29,13 +29,13 @@ describe('regexUtils', () => {
         onlyLetters: true,
       });
 
-      expect(result).toEqual('/[a-zA-Z]+/');
+      expect(result).toEqual('[a-zA-Z]+');
     });
 
     it('isStart', () => {
       const result = createRegex({
         characters: '',
-        includeCharacters: false,
+        excludeCharacters: false,
         isGlobal: false,
         isCaseInsensitive: false,
         isStart: true,
@@ -44,13 +44,13 @@ describe('regexUtils', () => {
         onlyLetters: false,
       });
 
-      expect(result).toEqual('/^/');
+      expect(result).toEqual('^');
     });
 
     it('isEnd', () => {
       const result = createRegex({
         characters: '',
-        includeCharacters: false,
+        excludeCharacters: false,
         isGlobal: false,
         isCaseInsensitive: false,
         isStart: false,
@@ -59,28 +59,13 @@ describe('regexUtils', () => {
         onlyLetters: false,
       });
 
-      expect(result).toEqual('/$/');
-    });
-
-    it('includeCharacters', () => {
-      const result = createRegex({
-        characters: 'hello',
-        includeCharacters: true,
-        isGlobal: false,
-        isCaseInsensitive: false,
-        isStart: false,
-        isEnd: false,
-        onlyNumbers: false,
-        onlyLetters: false,
-      });
-
-      expect(result).toEqual('/[hello]/');
+      expect(result).toEqual('$');
     });
 
     it('excludeCharacters', () => {
       const result = createRegex({
         characters: 'hello',
-        includeCharacters: false,
+        excludeCharacters: true,
         isGlobal: false,
         isCaseInsensitive: false,
         isStart: false,
@@ -89,21 +74,22 @@ describe('regexUtils', () => {
         onlyLetters: false,
       });
 
-      expect(result).toEqual('/[^hello]/');
-    });
-  });
-
-  describe('addPatternModifier', () => {
-    it('isGlobal flag', () => {
-      expect(addPatternModifier(true, false)).toEqual('g');
+      expect(result).toEqual('[^hello]');
     });
 
-    it('isCaseInsensitive flag', () => {
-      expect(addPatternModifier(false, true)).toEqual('i');
-    });
+    it('include Characters', () => {
+      const result = createRegex({
+        characters: 'hello',
+        excludeCharacters: false,
+        isGlobal: false,
+        isCaseInsensitive: false,
+        isStart: false,
+        isEnd: false,
+        onlyNumbers: false,
+        onlyLetters: false,
+      });
 
-    it('Both isGlobal and isCaseInsensitive flag', () => {
-      expect(addPatternModifier(true, true)).toEqual('gi');
+      expect(result).toEqual('[hello]');
     });
   });
 });

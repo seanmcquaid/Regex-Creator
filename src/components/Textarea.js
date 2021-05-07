@@ -24,7 +24,7 @@ Textarea.propTypes = {
   value: propTypes.string.isRequired,
   name: propTypes.string.isRequired,
   label: propTypes.string.isRequired,
-  readOnly: propTypes.boolean,
+  readOnly: propTypes.bool,
 };
 
 export default Textarea;

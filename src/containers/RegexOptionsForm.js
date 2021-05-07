@@ -41,21 +41,9 @@ const RegexOptionsForm = ({ params, setParams }) => {
       <CheckboxsContainer>
         <Checkbox
           onChange={onChange}
-          name="includeCharacters"
-          label="Include Characters"
-          checked={params.includeCharacters}
-        />
-        <Checkbox
-          onChange={onChange}
-          name="isCaseInsensitive"
-          label="Case Insensitive"
-          checked={params.isCaseInsensitive}
-        />
-        <Checkbox
-          onChange={onChange}
-          name="isGlobal"
-          label="Global"
-          checked={params.isGlobal}
+          name="excludeCharacters"
+          label="Exclude Characters"
+          checked={params.excludeCharacters}
         />
         <Checkbox
           onChange={onChange}
