@@ -2,9 +2,8 @@ import propTypes from 'prop-types';
 import styled from 'styled-components';
 import { Textarea } from '../components';
 
-const RegexResult = ({ regex, exampleString }) => {
-  console.log(regex);
-  const newRegex = new RegExp(regex);
+const RegexResult = ({ regex, exampleString, flags }) => {
+  const newRegex = new RegExp(regex, flags);
   console.log(newRegex);
   return (
     <RegexResultContainer>
@@ -26,6 +25,7 @@ const Regex = styled.span``;
 RegexResult.propTypes = {
   regex: propTypes.string.isRequired,
   exampleString: propTypes.string.isRequired,
+  flags: propTypes.string.isRequired,
 };
 
 export default RegexResult;

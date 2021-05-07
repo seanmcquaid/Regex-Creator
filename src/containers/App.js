@@ -17,7 +17,7 @@ const App = () => {
     onlyNumbers: false,
     onlyLetters: false,
   });
-  const regex = useRegex(params);
+  const { regex, flags } = useRegex(params);
 
   return (
     <div>
@@ -26,7 +26,11 @@ const App = () => {
       </Header>
       <Main>
         <RegexOptionsForm params={params} setParams={setParams} />
-        <RegexResult regex={regex} exampleString={params.exampleString} />
+        <RegexResult
+          regex={regex}
+          exampleString={params.exampleString}
+          flags={flags}
+        />
       </Main>
     </div>
   );
