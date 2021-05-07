@@ -2,12 +2,12 @@ import propTypes from 'prop-types';
 import styled from 'styled-components';
 import { Textarea } from '../components';
 
-const RegexResult = ({ regex, exampleString, flags }) => {
-  const newRegex = new RegExp(regex, flags);
-  console.log(newRegex);
+const RegexResult = ({ regex, exampleString }) => {
+  const newRegex = new RegExp(regex, 'igm');
+  console.log(exampleString.match(newRegex));
   return (
     <RegexResultContainer>
-      <Regex>{regex}</Regex>
+      <Regex>{`/${regex}/igm`}</Regex>
       <Textarea
         value={exampleString}
         name="exampleStringRegexResult"
@@ -25,7 +25,6 @@ const Regex = styled.span``;
 RegexResult.propTypes = {
   regex: propTypes.string.isRequired,
   exampleString: propTypes.string.isRequired,
-  flags: propTypes.string.isRequired,
 };
 
 export default RegexResult;
