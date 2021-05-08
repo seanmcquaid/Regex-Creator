@@ -15,9 +15,16 @@ const Textarea = ({ onChange, value, name, label, readOnly }) => (
   </StyledLabel>
 );
 
-const StyledLabel = styled.label``;
+const StyledLabel = styled.label`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
-const StyledTextarea = styled.textarea``;
+const StyledTextarea = styled.textarea`
+  padding: 0.5rem;
+  margin: 0.5rem;
+`;
 
 Textarea.propTypes = {
   onChange: propTypes.func,
