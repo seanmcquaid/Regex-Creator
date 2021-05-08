@@ -76,9 +76,17 @@ const RegexOptionsForm = ({ params, setParams }) => {
 
 const Form = styled.form``;
 
-const TextInputsContainer = styled.div``;
+const TextInputsContainer = styled.div`
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+`;
 
-const CheckboxsContainer = styled.div``;
+const CheckboxsContainer = styled.div`
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+`;
 
 RegexOptionsForm.propTypes = {
   params: propTypes.object.isRequired,
