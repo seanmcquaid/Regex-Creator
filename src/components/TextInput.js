@@ -14,9 +14,16 @@ const TextInput = ({ onChange, value, name, label }) => (
   </StyledLabel>
 );
 
-const StyledLabel = styled.label``;
+const StyledLabel = styled.label`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
-const StyledTextInput = styled.input``;
+const StyledTextInput = styled.input`
+  padding: 0.5rem;
+  margin: 0.5rem;
+`;
 
 TextInput.propTypes = {
   onChange: propTypes.func.isRequired,

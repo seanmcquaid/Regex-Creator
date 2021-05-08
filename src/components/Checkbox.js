@@ -14,9 +14,16 @@ const Checkbox = ({ onChange, checked, name, label }) => (
   </StyledLabel>
 );
 
-const StyledLabel = styled.label``;
+const StyledLabel = styled.label`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
-const StyledCheckbox = styled.input``;
+const StyledCheckbox = styled.input`
+  padding: 0.5rem;
+  margin: 0.5rem;
+`;
 
 Checkbox.propTypes = {
   onChange: propTypes.func.isRequired,

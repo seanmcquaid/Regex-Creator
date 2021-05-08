@@ -18,7 +18,7 @@ const App = () => {
   const regex = useRegex(params);
 
   return (
-    <div>
+    <PageContainer>
       <Header>
         <H1>Regex Creator</H1>
       </Header>
@@ -26,12 +26,29 @@ const App = () => {
         <RegexOptionsForm params={params} setParams={setParams} />
         <RegexResult regex={regex} exampleString={params.exampleString} />
       </Main>
-    </div>
+    </PageContainer>
   );
 };
 
-const Header = styled.header``;
+const PageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+`;
 
-const Main = styled.main``;
+const Header = styled.header`
+  height: 20%;
+  display: flex;
+  align-items: center;
+`;
+
+const Main = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 80%;
+`;
 
 export default App;
